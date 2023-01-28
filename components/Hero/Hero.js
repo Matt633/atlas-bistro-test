@@ -22,9 +22,9 @@ console.log(heroProps.buttons);
 
       {/* const renderButtons = {heroProps.buttons}.map(button => (
         <Link href={button.link.url}>{button.link.title}</Link>
-      )); */}
+      ));
 
-      return <div>{renderButtons}</div>;
+      return <div>{renderButtons}</div>; */}
 
       {children}
     </section>
