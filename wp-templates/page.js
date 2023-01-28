@@ -11,6 +11,7 @@ import {
   NavigationMenu,
   FeaturedImage,
   SEO,
+  Hero,
 } from '../components';
 
 export default function Component(props) {
@@ -24,6 +25,17 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { title, content, featuredImage } = props?.data?.page ?? { title: '' };
+
+  const heroProps = {
+    image: props?.data?.page.hero.heroBgImage ?? featuredImage,
+    whiteText: props?.data?.page.hero.whiteText,
+    text: props?.data?.page.hero.heroText ?? title,
+    position: props?.data?.page.hero.heroPosition,
+    bgColor: props?.data?.page.hero.heroBgColor,
+    bgOpacity: props?.data?.page.hero.heroBgOpacity,
+    orientation: props?.data?.page.hero.heroContentOrientation,
+    buttons: props?.data?.page.hero.heroButtons,
+  }
 
   return (
     <>
@@ -40,6 +52,8 @@ export default function Component(props) {
       <Main>
         <>
           <EntryHeader title={title} image={featuredImage?.node} />
+          {!props?.data?.page.hero.noHero && <Hero heroProps={heroProps} />}
+          
           <Container>
             <ContentWrapper content={content} />
           </Container>
@@ -72,6 +86,30 @@ Component.query = gql`
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      hero {
+        heroBgImage {
+          srcSet
+          sourceUrl
+          slug
+          altText
+        }
+        whiteText
+        noHero
+        heroText
+        heroPosition
+        heroBgColor
+        heroBgOpacity
+        heroContentOrientation
+        heroButtons {
+          link {
+            target
+            title
+            url
+          }
+          buttonStyle
+          fieldGroupName
+        }
+      }
       ...FeaturedImageFragment
     }
     generalSettings {
