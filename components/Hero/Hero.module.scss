@@ -24,3 +24,10 @@
 	display: block;
 	font-size: 3rem;
 }
+
+.button-container {
+		position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}

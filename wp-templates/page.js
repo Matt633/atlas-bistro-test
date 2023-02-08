@@ -52,7 +52,7 @@ export default function Component(props) {
       <Main>
         <>
           <EntryHeader title={title} image={featuredImage?.node} />
-          {!props?.data?.page.hero.noHero && <Hero heroProps={heroProps} />}
+          {!props?.data?.page.hero.noHero && props.data.page.hero && <Hero heroProps={heroProps} />}
           
           <Container>
             <ContentWrapper content={content} />

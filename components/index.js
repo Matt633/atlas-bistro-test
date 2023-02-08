@@ -1,3 +1,4 @@
+export { Button } from './Button';
 export { Container } from './Container';
 export { ContentWrapper } from './ContentWrapper';
 export { EntryHeader } from './EntryHeader';
